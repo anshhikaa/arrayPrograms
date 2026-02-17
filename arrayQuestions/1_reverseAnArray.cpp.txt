@@ -1,0 +1,22 @@
+//problem : reverse an array 
+//platform : gfg
+//difficulty : easy 
+// t.c = o(n) , s.c= o(1)
+
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+  public:
+    void reverseArray(vector<int> &arr) {
+        int j = arr.size()-1;
+        int i= 0;
+      while(i<j){
+            int num = arr[i];
+            // could also use swap(arr[i],arr[j]);
+            arr[i]= arr[j];
+            arr[j] = num;
+            j--;
+            i++;
+        }
+    }
+}; 

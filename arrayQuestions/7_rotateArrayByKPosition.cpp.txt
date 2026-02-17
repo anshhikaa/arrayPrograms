@@ -1,0 +1,39 @@
+/ problem : rotate array by k position
+// platform : leetcode 189
+// difficulty : medium 
+
+// tc = o(n), sc = o(n)
+// brute force approach
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        k = k % n ;
+        vector<int>temp(n);
+        for(int i = 0 ; i < n ; i++){
+            int index = (i+k)%n;
+            temp[index] = nums[i];
+        }
+         nums = temp;
+    }
+};
+
+// tc = o(n), sc = o(1)
+// second approach - in place , using reverse function
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+         k = k % n;
+        reverse(nums.begin(),nums.end());
+        reverse(nums.begin(),nums.begin()+k);
+        reverse(nums.begin()+k,nums.end());
+    }
+};
+
+
+

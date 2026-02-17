@@ -1,0 +1,72 @@
+//problem : find minimum and maximum elements 
+// platform : gfg
+// difficulty : basic
+// tc = o(n)  ,sc = o(1)
+include<bits/stdc++.h>
+
+// approach 1 - 2n-2 comparisons
+using namespace std ;
+class Solution {
+  public
+    vector<int> getMinMax(vector<int> &arr) {
+        // code here
+        int minAns = INT_MAX;
+        int maxAns = INT_MIN;
+        for(int i = 0 ;i<arr.size();i++){
+            int num = arr[i];
+            if(num > maxAns){
+                maxAns= num ;
+            }
+            if(num < minAns){
+                minAns = num ;
+            }
+        }
+        vector<int> ans ;
+        ans.push_back(minAns);
+        ans.push_back(maxAns);
+        return ans;
+    }
+};
+
+// approach 2 - 3n/2 comparsion (pair comparisons)
+class Solution {
+  public:
+    vector<int> getMinMax(vector<int> &arr) {
+        
+        int n = arr.size();
+        int i = 0 ;
+        int minAns ;
+        int maxAns ;
+        //even array size
+        if(n%2==0){
+            if(arr[0] > arr[1]){
+                minAns = arr[1];
+                maxAns = arr[0];
+            }
+            else{
+               minAns = arr[0];
+               maxAns = arr[1];
+            }
+            i = 2;
+        }
+        else{
+            minAns = arr[0];
+            maxAns = arr[0];
+            i = 1;
+        }
+        while(i<n-1){
+            //pair comparison 
+            if(arr[i] > arr[i+1]){
+                maxAns = max(arr[i], maxAns);
+                minAns = min(arr[i+1], minAns);
+            }
+            else{
+                maxAns = max(arr[i+1], maxAns);
+                minAns = min(arr[i], minAns);
+                
+            }
+            i += 2;
+        }
+        return {minAns,maxAns};
+    }
+};

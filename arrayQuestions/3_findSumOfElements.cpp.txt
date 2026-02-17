@@ -1,0 +1,19 @@
+// problem = find sum of all the elements
+// platform = gfg
+// difficulty = basic
+// t.c = o(n) , sc = o(1)
+include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+  public:
+    // Function to return sum of elements
+    int arraySum(vector<int>& arr) {
+        // code here
+        int sum = 0;
+        int n = arr.size()
+        for(int i = 0 ;i<n;i++){
+            sum += arr[i];
+        }
+        return sum ;
+    }
+};

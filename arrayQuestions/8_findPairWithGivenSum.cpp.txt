@@ -1,0 +1,40 @@
+// problem :  find pair for a given sum(two sum)
+// platform:   leetcode 1
+// difficulty :  easy
+
+// tc = o(n^2), sc = o(1)
+// approach - brute force - nested loops
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for(int i = 0 ;i<nums.size();i++){
+            for(int j = i+1 ;j<nums.size();j++){
+                if(nums[i]+nums[j] == target){
+                  return {i,j};
+                }
+    
+            }
+        }
+        return { };
+    }
+};
+
+// tc = o(n), sc = o(n)
+//approach - optimised
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+      unordered_map<int,int>hashMap;
+      for(int i = 0 ;i<nums.size();i++){
+        int remaining = target-nums[i];
+         if(hashMap.find(remaining) != hashMap.end()){
+            return {hashMap[remaining], i };
+        }
+        hashMap[nums[i]] = i ;
+       
+      }
+      return { };  
+    }
+};

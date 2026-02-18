@@ -1,0 +1,24 @@
+// problem : remove given element in the array 
+// platform: leetcode 27
+// difficulty :  easy
+// tc = o(n) , sc = o(1)
+
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int k = nums.size()-1;
+        int i = 0 ;
+        while(i<=k){
+            if(nums[i] == val){
+               swap(nums[i],nums[k]);
+               k--;
+            }
+            else{
+                i++;
+            }   
+        }
+        return k+1;
+    }
+};

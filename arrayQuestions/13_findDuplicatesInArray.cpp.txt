@@ -1,0 +1,45 @@
+// problem :  find duplicates in a array
+// platform: leetcode 287
+// difficulty :  medium
+
+
+// tc = o(n), sc = o(1)
+//approach - negative marking -> if modifycation was allowed
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        for(int i = 0 ; i < n ; i++){
+            int index = abs(nums[i]);
+            if(nums[index] < 0){
+                return index ;
+            }
+            nums[index] *= -1;
+        }
+        return -1;
+    }
+};
+
+// approach: floyd tortoise and hare ->no modifycation(cycle detection)
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int fast = nums[0];
+        int slow = nums[0];
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while(slow != fast);
+        
+        slow  = nums[0];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};

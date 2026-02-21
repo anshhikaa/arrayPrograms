@@ -1,0 +1,28 @@
+// problem : check if arrays equal 
+// platform : gfg
+// tc = o(n) ,  sc = o(n)
+//approach - map increment and decrement
+# include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+  public:
+    bool checkEqual(vector<int>& a, vector<int>& b) {
+        unordered_map<int,int>freqmp;
+        for(int num1 : a){
+            freqmp[num1]++;
+        }
+        for(int num2  :b){
+            freqmp[num2]--;
+            if(freqmp[num2]<0){
+                return false;
+            }
+        }
+        for(auto it : freqmp){
+            if(it.second != 0 ){
+                return false;
+            }
+        }
+    return true;
+    }
+};
+

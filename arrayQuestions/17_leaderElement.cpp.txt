@@ -1,0 +1,49 @@
+// problem : leader element
+// platform : gfg
+
+// tc = o(n) , sc = o(n)
+// stack used
+#include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+  public:
+    vector<int> leaders(vector<int>& arr) {
+        // code here
+        int n = arr.size()-1;
+        vector<int>ans;
+        stack<int>s ;
+        s.push(arr[n]);
+       for(int i = n-1;i>= 0 ;i--){
+            if(!s.empty() && s.top()<=arr[i]){
+                s.push(arr[i]);
+            }
+        }
+        //stack to vector transfer 
+        while(!s.empty()){
+            int element = s.top(); s.pop();
+            ans.push_back(element);
+        }
+        return ans;
+    }
+};
+
+//without stack sc= o(1) 
+class Solution {
+  public:
+    vector<int> leaders(vector<int>& arr) {
+        // code here
+        vector<int> ans ;
+        int n = arr.size()-1;
+        int maxElement = arr[n];
+        ans.push_back(maxElement);
+        for(int i = n-1;i>=0;i--){
+            if(arr[i] >= maxElement){
+                maxElement = arr[i];
+                ans.push_back(maxElement);
+            }
+        }
+        //reverse ans
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};

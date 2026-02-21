@@ -1,0 +1,23 @@
+// problem : union of array
+// platform : gfg
+//  tc  = o(n+m) , sc = o(n)
+
+include<bits/stdc++.h>
+using namespace std ;
+class Solution {
+  public:
+    vector<int> findUnion(vector<int>& a, vector<int>& b) {
+        // code here
+        unordered_set<int>s(a.begin(),a.end());
+        vector<int> ans ;
+        for(int num : b){
+            if(s.find(num) == s.end()){
+                s.insert(num);
+            }
+        }
+        for(auto n : s){
+            ans.push_back(n);
+        }  
+        return ans;
+    }
+};

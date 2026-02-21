@@ -1,0 +1,31 @@
+// problem : left rotation 
+// platform : gfg 
+// tc  = o(n ), sc= o(1)
+//aprroach -> convert left->right , as k left rotation are equal to n-k right rotations (n=size of array)
+class Solution {
+  public:
+    void rotateArr(vector<int>& arr, int d) {
+        // code here
+        int n = arr.size();
+        d= d%n;
+       int newD = (n-d);
+       newD  = newD % n;
+       reverse(arr.begin(),arr.end());
+       reverse(arr.begin(),arr.begin()+newD);
+       reverse(arr.begin()+newD , arr.end());
+       }
+};
+
+// approach left rotation logic
+class Solution {
+  public:
+    void rotateArr(vector<int>& arr, int d) {
+        // code here
+        int n = arr.size();
+        d= d%n;
+       reverse(arr.begin(),arr.begin()+d);
+       reverse(arr.begin()+d , arr.end());
+         reverse(arr.begin(),arr.end());
+       }
+       
+};

@@ -2,6 +2,7 @@
 // platform : leetcode 349
 // difficulty : easy 
 // tc =   ,  sc =
+// tc =  o(n+m) ,  sc = o(n)
 
 //approach - using set
 include<bits/stdc++.h>

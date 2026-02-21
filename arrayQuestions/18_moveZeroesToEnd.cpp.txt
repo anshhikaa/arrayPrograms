@@ -1,0 +1,17 @@
+// problem : move zeroes to end
+// platform : leetcode 283
+// tc = o(n), sc = o(1)
+// two pointer approach
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n =nums.size()-1;
+        int j = 0;
+        for(int i = 0 ;i<=n;i++){
+            if(nums[i] != 0 ){
+                swap(nums[i] , nums[j]);
+                j++;
+            }
+        } 
+    }
+};

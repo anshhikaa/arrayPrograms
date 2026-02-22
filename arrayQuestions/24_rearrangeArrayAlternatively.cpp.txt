@@ -1,0 +1,29 @@
+// problem : rearrange array alternatively 
+// platform : gfg 
+// approach  - in place (value enconding)
+// tc = o(nlogn) sc = o(1)
+    class Solution {
+  public:
+    void rearrange(vector<int>& arr) {
+            sort(arr.begin(),arr.end());
+        long long maxElement = (long long)arr[arr.size()-1]+1;
+        int left = 0 ;
+        int right = arr.size()-1;
+        for(int i = 0 ; i < arr.size();i++){
+            if(i%2 == 0){
+                long long val = arr[right] % maxElement;
+                arr[i] +=   val * maxElement;
+                right --;
+            }
+            else{
+                long long val = arr[left] % maxElement;
+                arr[i] += val * maxElement;
+                left ++;
+            }
+        }
+        for(long long i = 0 ; i < arr.size() ; i++){
+            arr[i] = arr[i]/maxElement;
+        }
+         
+    }
+};

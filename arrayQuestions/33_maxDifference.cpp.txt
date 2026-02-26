@@ -1,0 +1,20 @@
+//problem : max difference 
+// leetcode 2016
+// approach - maintain a small element so far calculate difference
+class Solution {
+public:
+    int maximumDifference(vector<int>& nums) {
+        int smallElement = nums[0] ;
+        int maxDiff = -1;
+        for(int i = 1 ;i<nums.size();i++){
+            if(nums[i]<smallElement){
+                smallElement = nums[i];
+            }
+            else if(nums[i]>smallElement){
+                int diff = nums[i]-smallElement;
+                maxDiff = max(diff,maxDiff);
+            }
+        }
+        return maxDiff;
+    }
+};

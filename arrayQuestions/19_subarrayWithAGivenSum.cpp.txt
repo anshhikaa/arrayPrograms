@@ -1,0 +1,23 @@
+// problem : subarray with a given sum 
+// platform : gfg
+// approach - variable size sliding window 
+// tc = o(n), sc = o(1)
+class Solution {
+  public:
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        int n = arr.size();
+        int sum = 0;
+        int left =  0;
+        for(int right = 0 ; right<n ; right++){
+            sum += arr[right];
+            while(sum>target){
+                sum -= arr[left];
+                left ++;
+            }
+            if(sum == target){
+                return {left+1,right+1};
+            }
+        }
+        return {-1};
+    }
+};

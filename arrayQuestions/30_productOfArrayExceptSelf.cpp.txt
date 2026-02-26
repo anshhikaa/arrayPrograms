@@ -1,0 +1,58 @@
+// problem : product of array except self
+// platform : leetcode 238
+// approach = iterative tc =o(n) sc = o(1)
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int multiplyOfNonZeroes = 1;
+        int zeroCount = 0  ;
+        int size = nums.size();
+        for(int i = 0 ; i < size ; i++){
+            if(nums[i] == 0){
+                zeroCount ++;
+                continue;
+            }
+            multiplyOfNonZeroes *= nums[i];
+        }
+        vector<int>ans(nums.size(),0);
+        for(int i = 0 ; i < size ; i++){
+            if(nums[i] != 0){
+                if(zeroCount > 0){
+                    nums[i] = 0;
+                }
+                else{
+                  ans[i] = multiplyOfNonZeroes/nums[i];
+                }
+            }
+            else if(nums[i] == 0){ 
+                if(zeroCount-1 == 0){
+                    ans[i] = multiplyOfNonZeroes;
+                }
+                else{
+                    ans[i] = 0;
+                }  
+            }   
+        }
+        return ans ;  
+    }
+};
+
+//approach- calculate preffix  & suffix tc = o(n)  sc=o(1)
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int prefix = 1 ;
+        int suffix = 1;
+        int n = nums.size();
+        vector<int>ans (nums.size(),1);
+        for(int i = 0 ;i< n ;i++){
+          ans[i] = prefix ;
+          prefix *= nums[i];
+        }
+        for(int i = n-1  ; i>=0 ;i--){
+            ans[i] *= suffix ;
+            suffix *= nums[i]; 
+        }
+       return ans ; 
+    }
+};
